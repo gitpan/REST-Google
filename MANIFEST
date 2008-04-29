@@ -1,0 +1,9 @@
+Build.PL
+Changes
+lib/REST/Google.pm
+lib/REST/Google.pod
+MANIFEST			This list of files
+META.yml
+README
+t/01_basic.t
+t/02_pod.t

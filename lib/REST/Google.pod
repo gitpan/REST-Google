@@ -1,0 +1,117 @@
+=head1 NAME
+
+REST::Google - access Google REST API from Perl
+
+=head1 VERSION
+
+This documentation refers to REST::Google version 1.0.1
+
+=head1 SYNOPSIS
+
+	use REST::Google;
+
+	# set service to use
+	REST::Google->service('http://ajax.googleapis.com/ajax/services/search/web');
+
+	# provide a valid http referer
+	Search::Google->http_referer('http://example.com');
+
+	my $res = REST::Google->new(
+		q => 'Larry Wall',
+	);
+
+	die "response status failure" if $res->responseStatus != 200;
+
+	my $data = $res->responseData;
+
+	use Data::Dumper;
+	print Dumper( $data );
+
+=head1 DESCRIPTION
+
+C<REST::Google> provides OO interface to Google REST (aka AJAX) API.
+
+=head1 METHODS
+
+=over
+
+=item __PACKAGE__->service()
+
+Get/set service to use. You must set this to valid URL. E.g.:
+
+	REST::Google->service('http://ajax.googleapis.com/ajax/services/search/web');
+
+=item __PACKAGE__->http_referer()
+
+Get/set HTTP C<Referer> header.
+
+	REST::Google->http_referer('http://example.org/search.html');
+
+I<Note:> Google says that you should supply a valid HTTP referer header each time you
+perform a request to their AJAX API, so C<new()> raises warning unless referer is specified.
+
+=item __PACKAGE__->new()
+
+The constructor use it's arguments to build a valid HTTP GET request to given service,
+so it takes the same arguments as the given web service takes.
+Please refer to 'Google AJAX API' documentation for complete list
+of arguments for a service you're using. E.g.:
+
+	my $res = REST::Google->new(
+		q => 'Pamela Anderson',
+	);
+
+For example, if you're using the Web search service, the code above will perform a following HTTP GET request:
+
+	http://ajax.googleapis.com/ajax/services/search/web?hl=fr&q=Pamela+Anderson&v=1.0&start=4
+
+I<Note:> You can left protocol version number unspecified since C<v=1.0> is passed by default.
+
+C<REST::Google> object are completely represent Google API response objects
+and has the following structure:
+
+	{
+		"responseData" => {},
+		"responseDetails" => undef | string-on-error,
+		"responseStatus" => 200 | error-code
+	}
+
+=item $res->responseStatus()
+
+The responseStatus property contains a value of 200 on success and a non-200
+HTTP error status code on failure. If there is a failure, C<responseDetails> contains
+a diagnostic string.
+
+=item $res->responseDetails()
+
+Contain an error string if C<responseStatus> is not 200.
+
+=item $res->responseData()
+
+Returns a C<responseData> structure.
+Please refer to service API documentation for response structure details.
+
+=back
+
+=head1 DEPENDENCIES
+
+C<REST::Google> uses L<JSON::Any> for decoding Google AJAX Search API response and L<LWP> for search request sending.
+
+=head1 SEE ALSO
+
+L<http://code.google.com/p/rest-google/> - this project on Google code;
+
+L<http://code.google.com/apis/ajaxsearch/documentation/#fonje> - information about
+Google AJAX API in non-Javascript environments;
+
+L<http://code.google.com/apis/ajaxsearch/documentation/reference.html#_intro_fonje> - detailed specification
+for Google AJAX Search API.
+
+L<Search::Google>, L<Translate::Google>, L<Feed::Google> provide OO interface to Google
+services and use C<REST::Google> as base class.
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2008, Eugen Sobchenko <ejs@cpan.org> and Sergey Sinkovskiy <glorybox@cpan.org>
+
+This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
