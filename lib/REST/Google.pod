@@ -1,10 +1,6 @@
 =head1 NAME
 
-REST::Google - access Google REST API from Perl
-
-=head1 VERSION
-
-This documentation refers to REST::Google version 1.0.1
+REST::Google - access Google REST (aka AJAX) API from Perl
 
 =head1 SYNOPSIS
 
@@ -14,7 +10,7 @@ This documentation refers to REST::Google version 1.0.1
 	REST::Google->service('http://ajax.googleapis.com/ajax/services/search/web');
 
 	# provide a valid http referer
-	Search::Google->http_referer('http://example.com');
+	REST::Google->http_referer('http://example.com');
 
 	my $res = REST::Google->new(
 		q => 'Larry Wall',
@@ -63,7 +59,7 @@ of arguments for a service you're using. E.g.:
 
 For example, if you're using the Web search service, the code above will perform a following HTTP GET request:
 
-	http://ajax.googleapis.com/ajax/services/search/web?hl=fr&q=Pamela+Anderson&v=1.0&start=4
+	http://ajax.googleapis.com/ajax/services/search/web?q=Pamela+Anderson&v=1.0
 
 I<Note:> You can left protocol version number unspecified since C<v=1.0> is passed by default.
 
@@ -99,16 +95,19 @@ C<REST::Google> uses L<JSON::Any> for decoding Google AJAX Search API response a
 
 =head1 SEE ALSO
 
+L<REST::Google::Search>, L<REST::Google::Translate>, L<REST::Google::Feeds> child classes for
+Search, Translate and Feeds services correspondingly.
+
 L<http://code.google.com/p/rest-google/> - this project on Google code;
 
-L<http://code.google.com/apis/ajaxsearch/documentation/#fonje> - information about
-Google AJAX API in non-Javascript environments;
+L<http://code.google.com/apis/ajaxsearch/documentation/#fonje> - brief information about
+Google Search AJAX API in non-Javascript environments;
 
-L<http://code.google.com/apis/ajaxsearch/documentation/reference.html#_intro_fonje> - detailed specification
-for Google AJAX Search API.
+L<http://code.google.com/apis/ajaxsearch/documentation/reference.html#_intro_fonje> - Google Search AJAX API.
 
-L<Search::Google>, L<Translate::Google>, L<Feed::Google> provide OO interface to Google
-services and use C<REST::Google> as base class.
+L<http://code.google.com/apis/ajaxlanguage/documentation/#fonje> - Google Translate AJAX API
+
+L<http://code.google.com/apis/ajaxfeeds/documentation/#fonje> - Google Feeds AJAX API
 
 =head1 LICENSE AND COPYRIGHT
 

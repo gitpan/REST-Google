@@ -1,12 +1,12 @@
 #
-# $Id: Google.pm 7 2008-04-29 15:39:28Z esobchenko $
+# $Id: Google.pm 9 2008-04-29 21:17:12Z esobchenko $
 
 package REST::Google;
 
 use strict;
 use warnings;
 
-use version; our $VERSION = qv('1.0.1');
+use version; our $VERSION = qv('1.0.2');
 
 use Carp qw/carp croak/;
 

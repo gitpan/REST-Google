@@ -9,6 +9,7 @@ my $build = Module::Build->new(
 		'perl' => '5.6.1',
 		'version' => '0.50',
 		'Test::More' => '0.47',
+		'Class::Accessor' => '0.31',
 		'Class::Data::Inheritable' => '0.06',
 		'JSON::Any' => '1.16',
 		'LWP::UserAgent' => '2.033',
