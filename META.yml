@@ -1,6 +1,6 @@
 ---
 name: REST-Google
-version: 1.0.3
+version: 1.0.4
 author:
   - 'Eugen Sobchenko <ejs@cpan.org>'
 abstract: access Google REST (aka AJAX) API from Perl
@@ -19,13 +19,13 @@ requires:
 provides:
   REST::Google:
     file: lib/REST/Google.pm
-    version: 1.0.3
+    version: 1.0.4
   REST::Google::Feeds:
     file: lib/REST/Google/Feeds.pm
     version: 1.0.3
   REST::Google::Search:
     file: lib/REST/Google/Search.pm
-    version: 1.0.3
+    version: 1.0.4
   REST::Google::Search::Blogs:
     file: lib/REST/Google/Search/Blogs.pm
     version: 1.0.3

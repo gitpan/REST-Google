@@ -23,8 +23,9 @@ lib/REST/Google/Search/Web.pod
 lib/REST/Google/Translate.pm
 lib/REST/Google/Translate.pod
 MANIFEST			This list of files
+META.yml
 README
 t/01_basic.t
 t/02_load_children.t
+t/03_search.t
 t/99_pod.t
-META.yml
