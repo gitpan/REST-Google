@@ -29,5 +29,7 @@ README
 t/01_basic.t
 t/02_load_children.t
 t/03_search.t
+t/04_feeds.t
+t/05_translate.t
 t/99_pod.t
 META.yml
